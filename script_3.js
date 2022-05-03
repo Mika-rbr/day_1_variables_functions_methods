@@ -6205,7 +6205,7 @@ console.log('Average revenue by user :')
 const average_revenue = users.reduce((acc,user) => acc + user.revenue, 0) / users.length;
 console.log(Math.round(average_revenue));
 
-// users_with_revenue
+// % of users_with_revenue
 console.log('Rate of Users with revenue :')
 const rate_users_with_revenue = users.filter(user => user.revenue > 0).length / users.length * 100;
 console.log(Math.round(rate_users_with_revenue) + ' ' + '%');
@@ -6214,7 +6214,7 @@ console.log(Math.round(rate_users_with_revenue) + ' ' + '%');
 console.log('Average Revenue Users :')
 const users_with_revenue = users.filter(user => user.revenue > 0)
 const average_revenue_users = users_with_revenue.reduce((acc, user) => acc + user.revenue, 0) / users_with_revenue.length;
-console.log(average_revenue_users)
+console.log(Math.round(average_revenue_users));
 
 //total revenue
 console.log('Total Revenue : ')
@@ -6247,3 +6247,50 @@ console.log('Germany : ' + revenue_gr);
 console.log('United States ; ' + revenue_us);
 console.log('France : ' + revenue_fr);
 console.log('Great Britain : ' + revenue_uk);
+
+// country with revenue
+console.log('Country with revenue :' )
+
+const country_with_revenue = users_with_revenue.map(user => user.country).filter((country, index, array) => array.indexOf(country) === index);
+
+console.log(country_with_revenue)
+
+//  top_five_revenue
+console.log('top 5 revenue :')
+
+const highest_revenue = users.sort((a, b) => b.revenue - a.revenue);
+const top_five_revenue = highest_revenue.slice(0, 5);
+
+console.log(top_five_revenue);
+
+// higher sex revenue
+
+const female = users.filter(user => user.sex === 'F');
+const male = users.filter(user => user.sex === 'M');
+
+const female_revenue = female.reduce((acc, user) => acc + user.revenue, 0);
+const male_revenue = male.reduce((acc, user) => acc + user.revenue, 0);
+
+const highest_sex_revenue = () => {
+  if(female_revenue > male_revenue) {
+    console.log('Highest revenue is from Women')
+  } else {
+    console.log('Highest revenue is from Men')
+  }
+};
+highest_sex_revenue()
+
+// 75 and more revenue
+console.log('Users with 75 and more revenue :')
+
+const revenue_75 = users_with_revenue.filter(user => user.revenue > 7500);
+
+console.log(revenue_75)
+
+//average users with revenue between 0..100
+console.log('Average users with revenue in top 100')
+
+const first_100 = users.filter(user => user.id >= 100);
+const first_100_with_revenue = first_100.filter(user => user.revenue > 0);
+
+console.log(Math.round(first_100_with_revenue.length / first_100.length * 100) + '%')
