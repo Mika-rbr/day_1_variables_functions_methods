@@ -1,2 +1,2 @@
 ## How to Use ?
-Open index.html on your Web browser
+#Open index.html on your Web browser
