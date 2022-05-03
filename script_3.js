@@ -6223,12 +6223,27 @@ console.log(total_revenue);
 
 //users in France
 console.log('Users from France :')
-const users_in_france = users.filter(user => user.country === 'France').length;
-console.log(users_in_france);
+const users_fr = users.filter(user => user.country === 'France');
+console.log(users_fr.length);
 
 //users with revenue in France
 console.log('Users from France with revenue :')
 const users_in_france_with_revenue = users.filter(user => user.country === 'France' && user.revenue > 0).length;
 console.log(users_in_france_with_revenue);
 
-//
+//total revenue by country
+console.log('Total revenue by country :')
+
+const users_gr = users.filter(user => user.country === 'Germany');
+const users_us = users.filter(user => user.country === 'United States');
+const users_uk = users.filter(user => user.country === 'Great Britain');
+
+const revenue_gr = users_gr.reduce((acc, user) => acc + user.revenue, 0);
+const revenue_us = users_us.reduce((acc, user) => acc + user.revenue, 0);
+const revenue_fr = users_fr.reduce((acc, user) => acc + user.revenue, 0);
+const revenue_uk = users_uk.reduce((acc, user) => acc + user.revenue, 0);
+
+console.log('Germany : ' + revenue_gr);
+console.log('United States ; ' + revenue_us);
+console.log('France : ' + revenue_fr);
+console.log('Great Britain : ' + revenue_uk);
